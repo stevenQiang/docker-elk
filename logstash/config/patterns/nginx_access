@@ -1,0 +1,2 @@
+METHOD (OPTIONS|GET|HEAD|POST|PUT|DELETE|TRACE|CONNECT)
+NGINX_ACCESS %{IPORHOST:visitor_ip} - %{USERNAME:remote_user} \[%{HTTPDATE:time_local}\] "%{DATA:server_name}" "%{METHOD:method} %{URIPATHPARAM:path} HTTP/%{NUMBER:http_version}" %{INT:status} %{INT:body_bytes_sent} "%{URI:referer}" %{QS:user_agent}
