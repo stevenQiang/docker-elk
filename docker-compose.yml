@@ -7,7 +7,7 @@ services:
       context: elasticsearch/
     volumes:
       - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
-      - /home/elk/data/elasticsearch/data:/usr/share/elasticsearch/data
+      - ./data/elasticsearch:/usr/share/elasticsearch/data
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -28,11 +28,6 @@ services:
       - elk
     depends_on:
       - elasticsearch
-    logging:
-      driver: syslog
-      options:
-        # syslog-address: "tcp://120.24.79.179:5000"
-        tag: "logstash"
 
   kibana:
     build:
