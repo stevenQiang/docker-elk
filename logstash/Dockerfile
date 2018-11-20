@@ -12,6 +12,7 @@ RUN "$PLUGIN_BIN" install logstash-filter-grok
 RUN "$PLUGIN_BIN" install logstash-filter-useragent
 RUN "$PLUGIN_BIN" install logstash-output-elasticsearch
 
+EXPOSE 12201/udp
 CMD ["-f", "/etc/logstash/logstash.conf"]
 COPY ./conf /etc/logstash
 
