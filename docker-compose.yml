@@ -28,6 +28,11 @@ services:
       - elk
     depends_on:
       - elasticsearch
+    logging:
+      driver: syslog
+      options:
+        syslog-address: "tcp://syslog_host:5000"
+        tag: "logstash"
 
   kibana:
     build:
