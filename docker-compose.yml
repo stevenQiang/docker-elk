@@ -31,7 +31,7 @@ services:
     logging:
       driver: syslog
       options:
-        syslog-address: "tcp://syslog_host:5000"
+        syslog-address: "tcp://120.24.79.179:5000"
         tag: "logstash"
 
   kibana:
