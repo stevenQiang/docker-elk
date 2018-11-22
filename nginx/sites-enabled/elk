@@ -1,0 +1,34 @@
+server {
+
+    listen 80;
+    server_name 0.0.0.0;
+    charset utf-8;
+
+    location / {
+        proxy_pass http://kibana:5601;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+}
+
+
+server {
+
+    listen 443;
+    ssl on;
+    charset utf-8;
+
+    ssl_certificate    /etc/nginx/cert/dvwork.crt;
+    ssl_certificate_key    /etc/nginx/cert/dvwork.key;
+
+    log_subrequest on;
+
+    location / {
+        proxy_pass https://kibana:5601;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
